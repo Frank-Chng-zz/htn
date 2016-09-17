@@ -18,5 +18,10 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="htnb_main" target="1.8" />
+      <module name="htnb_src" target="1.8" />
+      <module name="htnb_test" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
