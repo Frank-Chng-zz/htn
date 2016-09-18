@@ -23,10 +23,6 @@ class GateKeeper {
 	                            "FIRE_STATIONS",
 	                            "HOMELESS_SHELTERS",
 	                            "LIBRARIES",
-	                            "NBHD_BOUNDARIES",
-	                            "NBHD_ECONOMICS",
-	                            "NBHD_ETHNICITIES",
-	                            "NBHD_SAFETY_INDICATORS",
 	                            "POLICE_STATIONS",
 	                            "RED_LIGHT_CAMERAS",
 	                            "RENEWABLE_ENERGY",
@@ -44,9 +40,6 @@ class GateKeeper {
 	}
 
 	func getDict(from table: String) -> [String: String] {
-		guard let db = database else {
-			return [:]
-		}
 		guard let database = database, database.tableExists(table) else {
 			return [:]
 		}
@@ -59,29 +52,31 @@ class GateKeeper {
 			}
 			dict[coordinates] = "TEMP STRING"
 		}
-		print(dict)
 		return dict
 	}
 
 	func getCoordinates(from table: String) -> [CLLocation] {
-		let pattern = "^\\[(-?[0-9]*.?[0-9]*), (-?[0-9]*.?[0-9]*)\\]$"
+		let firstPattern = "(-?[0-9]+\\.?[0-9]*), -?[0-9]+\\.?[0-9]*"
+		let secondPattern = "-?[0-9]+\\.?[0-9]*, (-?[0-9]+\\.?[0-9]*)"
 		let dict = self.getDict(from: table)
 		var array = [CLLocation]()
 		for string in dict.keys {
-			let regex = try! NSRegularExpression(pattern: pattern, options: .caseInsensitive)
-			var result = regex.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+			let firstRegex = try! NSRegularExpression(pattern: firstPattern, options: .caseInsensitive)
+			var result = firstRegex.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
 
 			var lat: CLLocationDegrees!
 			var long: CLLocationDegrees!
 
 			var range = result[0].rangeAt(1)
 			if let swiftRange = range.range(for: string) {
-				lat = CLLocationDegrees(string.substring(with: swiftRange))
+				long = CLLocationDegrees(string.substring(with: swiftRange))
 			}
 
-			range = result[1].rangeAt(1)
+			let secondRegex = try! NSRegularExpression(pattern: secondPattern, options: .caseInsensitive)
+			result = secondRegex.matches(in: string, options: [], range: NSRange(location: 0, length: string.utf16.count))
+			range = result[0].rangeAt(1)
 			if let swiftRange = range.range(for: string) {
-				long = CLLocationDegrees(string.substring(with: swiftRange))
+				lat = CLLocationDegrees(string.substring(with: swiftRange))
 			}
 
 			let location = CLLocation(latitude: lat, longitude: long)
