@@ -4,15 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>htn 2.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
 		<key>htn.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>3</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>17A5FB491D8D182B009B8836</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4A28580C1D8E2AAD00C10E5C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
