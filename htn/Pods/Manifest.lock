@@ -1,27 +1,44 @@
 PODS:
   - Alamofire (4.0.0)
-  - SQLite.swift (0.10.1):
-    - SQLite.swift/standard (= 0.10.1)
-  - SQLite.swift/standard (0.10.1)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/FTS (2.6.2):
+    - FMDB/standard
+  - FMDB/SQLCipher (2.6.2):
+    - SQLCipher
+  - FMDB/standalone (2.6.2):
+    - FMDB/standalone/default (= 2.6.2)
+    - FMDB/standalone/FTS (= 2.6.2)
+  - FMDB/standalone/default (2.6.2):
+    - sqlite3
+  - FMDB/standalone/FTS (2.6.2):
+    - sqlite3/fts
+  - FMDB/standard (2.6.2)
+  - SQLCipher (3.4.0):
+    - SQLCipher/standard (= 3.4.0)
+  - SQLCipher/common (3.4.0)
+  - SQLCipher/standard (3.4.0):
+    - SQLCipher/common
+  - sqlite3 (3.14.2):
+    - sqlite3/common (= 3.14.2)
+  - sqlite3/common (3.14.2)
+  - sqlite3/fts (3.14.2):
+    - sqlite3/common
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - SQLite.swift (from `https://github.com/stephencelis/SQLite.swift.git`, branch `swift3-mariotaku`)
-
-EXTERNAL SOURCES:
-  SQLite.swift:
-    :branch: swift3-mariotaku
-    :git: https://github.com/stephencelis/SQLite.swift.git
-
-CHECKOUT OPTIONS:
-  SQLite.swift:
-    :commit: 8f08796afc608322797a3b699e7d2abcc3e26c0f
-    :git: https://github.com/stephencelis/SQLite.swift.git
+  - FMDB
+  - FMDB/FTS
+  - FMDB/SQLCipher
+  - FMDB/standalone
+  - FMDB/standalone/FTS
 
 SPEC CHECKSUMS:
   Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
-  SQLite.swift: c54b2cb32c2ec77cd52bc7442d05dd51b0623861
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  SQLCipher: 4c768761421736a247ed6cf412d9045615d53dff
+  sqlite3: 0da4924a394eff8e354bb63138818c870b28b097
 
-PODFILE CHECKSUM: 98e6ee0fc6775cc0dc7f8e464f44633ea1d6c659
+PODFILE CHECKSUM: d6b6a328c86b17956a59fc6beb800d4d52043426
 
 COCOAPODS: 1.1.0.rc.2

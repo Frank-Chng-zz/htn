@@ -8,27 +8,41 @@
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>0</integer>
+		</dict>
+		<key>FMDB.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods-htn.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>1</integer>
 		</dict>
-		<key>SQLite.swift.xcscheme</key>
+		<key>SQLCipher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
-			<key>orderHint</key>
-			<integer>2</integer>
+		</dict>
+		<key>sqlite3.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3CE93AC33D5BC6F5CA1DE31452C1A4FD</key>
+		<key>17D450132ABD41DB4BE22E77D2E51613</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>30C0A258AC97D60E1A90EB59514E07B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A03D05DFE91903C316F1554330C4384</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -38,7 +52,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A54F942A0AE364F8F43E34E52C8BE51</key>
+		<key>C55F52D07BDA59152937409FB8AF4B33</key>
 		<dict>
 			<key>primary</key>
 			<true/>

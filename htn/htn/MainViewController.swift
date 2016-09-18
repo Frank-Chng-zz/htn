@@ -9,20 +9,34 @@
 import UIKit
 import MapKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, MKMapViewDelegate {
 
 	@IBOutlet weak var map: MKMapView!
 
+	let gateKeeper = (UIApplication.shared.delegate as! AppDelegate).gateKeeper
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		let location = CLLocation(latitude: 46.7667 as CLLocationDegrees, longitude: 23.58 as CLLocationDegrees)
-		addRadiusCircle(location: location)
+
+		self.map.delegate = self
+
+		self.setupGateKeeper()
+		self.setupInformation()
 	}
 
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	}
+
+	func setupGateKeeper() {
+		self.gateKeeper.setup()
+	}
+
+	func setupInformation() {
+		let information = self.gateKeeper.getCoordinates(from: self.gateKeeper.tableNames[0])
+		for datum in information {
+			self.addRadiusCircle(location: datum)
+		}
 	}
 
 	func display(theseNodes nodes: [CLLocationCoordinate2D]) {
@@ -30,24 +44,23 @@ class MainViewController: UIViewController {
 	}
 
 	func display(node: CLLocationCoordinate2D) {
-
+		
 	}
 
 	func addRadiusCircle(location: CLLocation){
-		let circle = MKCircle(center: location.coordinate, radius: 100000 as CLLocationDistance)
+		let circle = MKCircle(center: location.coordinate, radius: 100 as CLLocationDistance)
 		self.map.add(circle)
 	}
 
-	func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+	func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
 		if overlay is MKCircle {
 			let circle = MKCircleRenderer(overlay: overlay)
 			circle.strokeColor = UIColor.red
-			circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 1.0)
-			circle.lineWidth = 1
+			circle.fillColor = UIColor(red: 100, green: 0, blue: 0, alpha: 0.4)
+			circle.lineWidth = 2
 			return circle
-		} else {
-			return nil
 		}
+		return MKOverlayRenderer(overlay: overlay)
 	}
 }
 
